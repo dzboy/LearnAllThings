@@ -1,1 +1,1 @@
-include ':app', ':ioc-compiler', ':ioc-anno', ':ioc-api', ':java-test'
+include ':app', ':ioc-compiler', ':ioc-anno', ':ioc-api', ':java-test', ':android-test'
