@@ -6,7 +6,7 @@ import dagger.Component;
 /**
  * Created by Administrator on 2017/8/23.
  */
-@Component
+@Component(modules = FooModule.class)
 public interface FooComponent {
     void inject(FooActivity activity);
 }

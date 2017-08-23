@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LearnAllThings.iml" filepath="$PROJECT_DIR$/LearnAllThings.iml" />
       <module fileurl="file://$PROJECT_DIR$/android-test/android-test.iml" filepath="$PROJECT_DIR$/android-test/android-test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android-test/android-test.iml" filepath="$PROJECT_DIR$/android-test/android-test.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/ioc-anno/ioc-anno.iml" filepath="$PROJECT_DIR$/ioc-anno/ioc-anno.iml" />
       <module fileurl="file://$PROJECT_DIR$/ioc-api/ioc-api.iml" filepath="$PROJECT_DIR$/ioc-api/ioc-api.iml" />
