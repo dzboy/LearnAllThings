@@ -6,4 +6,5 @@ package cn.loftlab.android_test.persion.body;
 
 public interface Body {
     public void actionWith(Limb limb);
+    public void action();
 }

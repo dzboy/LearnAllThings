@@ -14,21 +14,22 @@ import cn.loftlab.android_test.persion.body.persionImpl.PersionBody;
 /**
  * Created by Administrator on 2017/8/24.
  */
-public class Persion {
-    //@Inject
-    PersionBody body;
+public class Mammals {
+    @Inject
+    Body body;
 
     @Inject
-    public Persion() {
-
+    public Mammals() {
+        System.out.print("哺乳动物");
     }
 
-    @Inject
-    public void setBody(PersionBody body) {
-        this.body = body;
-    }
+//    @Inject
+//    public void setBody(Body body) {
+//        this.body = body;
+//    }
 
     public void action() {
+        body.action();
         System.out.print("action");
     }
 
