@@ -15,7 +15,7 @@ import dagger.Component;
  */
 @Component(modules = {ArmModule.class, LegModule.class, HeadModule.class})
 public interface LimbComponent {
-    @Named("arm")
+    @Named("Arm")
     Arm getArm();
     @Named("leg")
     Leg getLeg();

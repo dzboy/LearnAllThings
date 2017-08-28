@@ -13,7 +13,7 @@ import dagger.Provides;
 @Module
 public class ArmModule {
     @Provides
-    @Named("arm")
+    @Named("Arm")
     public Arm arm() {
         return new PersonArm();
     }
