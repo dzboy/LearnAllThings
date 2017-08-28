@@ -1,6 +1,7 @@
 package cn.loftlab.android_test.persion;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import cn.loftlab.android_test.persion.body.Arm;
 import cn.loftlab.android_test.persion.body.Body;
@@ -16,6 +17,7 @@ import cn.loftlab.android_test.persion.body.persionImpl.PersionBody;
  */
 public class Mammals {
     @Inject
+    @Named("person")
     Body body;
 
     @Inject

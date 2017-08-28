@@ -1,5 +1,7 @@
 package cn.loftlab.android_test.persion.body.module;
 
+import javax.inject.Named;
+
 import cn.loftlab.android_test.persion.body.Leg;
 import cn.loftlab.android_test.persion.body.persionImpl.PersionLeg;
 import dagger.Component;
@@ -12,6 +14,7 @@ import dagger.Provides;
 @Module
 public class LegModule {
     @Provides
+    @Named("leg")
     public Leg leg() {
         return new PersionLeg();
     }
