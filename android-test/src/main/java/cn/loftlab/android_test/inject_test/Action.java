@@ -15,7 +15,7 @@ public class Action {
     Mammals person;
 
     public void action() {
-        DaggerActionComponent.create().inject(this);
+        //DaggerActionComponent.create().inject(this);
         person.run();
     }
 

@@ -1,17 +1,14 @@
 package cn.loftlab.android_test.inject_test.mammals;
 
-import javax.inject.Named;
-
+import cn.loftlab.android_test.inject_test.limbs.Limb;
 import dagger.Component;
 
 /**
- * Created by Administrator on 2017/8/29.
+ * Created by Administrator on 2017/8/31.
  */
-//@Component(modules = MammalsModule.class)
-public interface MammalsComponent {
-  //  @Named("person")
-    Mammals getPerson();
 
-    //@Named("ape")
-    Mammals getApe();
+@Component
+public interface MammalsComponent {
+    void inject(Mammals mammals);
+    Limb provideLimb();
 }
