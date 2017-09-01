@@ -16,7 +16,12 @@ public class Action {
 
     public void action() {
         //DaggerActionComponent.create().inject(this);
-        person.run();
+//        MammalsComponent component = DaggerMammalsComponent
+//                .builder()
+//                .limbComponent(DaggerLimbComponent.create())
+//                .mammalsModule(new MammalsModule()).build();
+//        DaggerActionComponent.builder().mammalsComponent(component).build().inject(this);
+        person.walk();
     }
 
     public static void main(String[] args) {

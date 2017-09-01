@@ -7,7 +7,7 @@ import dagger.Component;
 /**
  * Created by Administrator on 2017/8/29.
  */
-@Component(modules = MammalsModule.class, dependencies = MammalsComponent.class)
+@Component(dependencies = MammalsComponent.class)
 public interface ActionComponent {
     void inject(Action action);
 }

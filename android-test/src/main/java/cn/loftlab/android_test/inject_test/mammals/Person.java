@@ -5,6 +5,7 @@ import android.util.Log;
 import javax.inject.Inject;
 
 import cn.loftlab.android_test.inject_test.limbs.Limb;
+import cn.loftlab.android_test.inject_test.limbs.Limbs;
 
 /**
  * Created by Administrator on 2017/8/29.
@@ -12,7 +13,11 @@ import cn.loftlab.android_test.inject_test.limbs.Limb;
 
 public class Person implements Mammals {
     @Inject
+    @Limbs(Limbs.ARM)
     Limb limb;
+//    public Person(Limb limb) {
+//        this.limb = limb;
+//    }
     @Override
     public void walk() {
         limb.action();
@@ -22,7 +27,7 @@ public class Person implements Mammals {
 
     @Override
     public void run() {
-        System.out.print("run ");
+        System.out.print("person run ");
     }
 
     @Override

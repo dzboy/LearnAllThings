@@ -3,6 +3,7 @@ package cn.loftlab.android_test.inject_test.mammals;
 import javax.inject.Inject;
 
 import cn.loftlab.android_test.inject_test.limbs.Limb;
+import cn.loftlab.android_test.inject_test.limbs.Limbs;
 
 /**
  * Created by Administrator on 2017/8/29.
@@ -10,6 +11,7 @@ import cn.loftlab.android_test.inject_test.limbs.Limb;
 
 public class Ape implements Mammals {
     @Inject
+    @Limbs(Limbs.ARM)
     Limb limb;
     @Override
     public void walk() {
@@ -20,7 +22,7 @@ public class Ape implements Mammals {
 
     @Override
     public void run() {
-        System.out.print("run ");
+        System.out.print("ape run ");
     }
 
     @Override
