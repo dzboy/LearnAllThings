@@ -2,8 +2,6 @@ package cn.loftlab.android_test.inject_test4;
 
 import javax.inject.Inject;
 
-import cn.loftlab.android_test.inject_test4.limbs.DaggerHeadComponent;
-import cn.loftlab.android_test.inject_test4.limbs.DaggerLimbsComponent;
 
 
 /**
@@ -29,19 +27,33 @@ public class Test {
 //        DaggerTestComponent.create().inject(this);
 //        DaggerAnimalsComponent.create().inject(animals);
         //animals.action();
-        AnimalsComponent animalsComponent = DaggerAnimalsComponent
+
+//        AnimalsComponent animalsComponent = DaggerAnimalsComponent
+//                .builder()
+//                .animalsModules(new AnimalsModules())
+//                .limbsComponent(DaggerLimbsComponent.create())
+//                .build();
+//        PersonComponent personComponent = DaggerPersonComponent.builder().animalsComponent(animalsComponent)
+//                .headComponent(DaggerHeadComponent.create())
+//                .personModule(new PersonModule())
+//                .build();
+//        DaggerTestComponent.builder().animalsComponent(animalsComponent).personComponent(personComponent).build().inject(this);
+//        personComponent.inject(person);
+//        person.headAction();
+//        person.action();
+
+        AnimalsComponent animalsComponent = DaggerAnimalsComponent.builder().build();
+        PersonComponent personComponent = animalsComponent.personComponent().build();
+        DaggerTestComponent
                 .builder()
-                .animalsModules(new AnimalsModules())
-                .limbsComponent(DaggerLimbsComponent.create())
-                .build();
-        PersonComponent personComponent = DaggerPersonComponent.builder().animalsComponent(animalsComponent)
-                .headComponent(DaggerHeadComponent.create())
-                .personModule(new PersonModule())
-                .build();
-        DaggerTestComponent.builder().animalsComponent(animalsComponent).personComponent(personComponent).build().inject(this);
+                .personComponent(personComponent)
+                .animalsComponent(animalsComponent)
+                .build()
+                .inject(this);
+        animalsComponent.inject(animals);
         personComponent.inject(person);
-        person.headAction();
         person.action();
+        person.headAction();
     }
     public static void main(String[] args) {
         new Test().test();
