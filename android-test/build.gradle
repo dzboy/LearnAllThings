@@ -33,4 +33,7 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-compiler:+'
 
     compile 'com.google.auto.value:auto-value:+'
+
+    compile "io.reactivex:rxjava:+"
+    compile "io.reactivex:rxandroid:+"
 }
