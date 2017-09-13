@@ -115,6 +115,49 @@ public class SwitchTest {
                     }
                 });
     }
+
+    void test3() {
+        Observable.just("heeellooo", "world").lift(new Observable.Operator<Integer, String>() {
+            @Override
+            public Subscriber<? super String> call(final Subscriber<? super Integer> subscriber) {
+                return new Subscriber<String>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onNext(String s) {
+                        subscriber.onNext(s.length());
+                    }
+                };
+            }
+        }).subscribe(new Subscriber<Integer>() {
+            @Override
+            public void onCompleted() {
+
+            }
+
+            @Override
+            public void onError(Throwable e) {
+
+            }
+
+            @Override
+            public void onNext(Integer integer) {
+                System.out.println(integer);
+            }
+        });
+    }
+
+    void test4() {
+        
+    }
     public static void main(String[] args) {
         new SwitchTest().test2();
     }
