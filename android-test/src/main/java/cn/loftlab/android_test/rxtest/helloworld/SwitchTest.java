@@ -171,40 +171,48 @@ public class SwitchTest {
 //            });
 //        }
 
-        Subscriber subscriber = new Subscriber() {
+        Subscriber subscriber = new Subscriber<Integer>() {
             public void onCompleted() {}
             public void onError(Throwable throwable) {}
-            public void onNext(Object o) {}
+            public void onNext(Integer o) {
+                System.out.println(o);
+            }
         };
 
-        Observable.create(new Observable.OnSubscribe<String>() {
-                @Override
-                public void call(Subscriber subscriber) {
-                    subscriber.onNext("");
-                    subscriber.onNext("");
-                }
-            }).create(new Observable.OnSubscribe<String>() {
+        final Observable.OnSubscribe onSubscribe = new Observable.OnSubscribe<String>() {
             @Override
             public void call(Subscriber subscriber) {
-//                Subscriber newSubscriber = operator.call(subscriber);
-//                newSubscriber.onStart();
-//                onSubscribe.call(newSubscriber);
+                subscriber.onNext("aaa");
+                subscriber.onNext("bbbbb");
             }
-        });
+        };
 
-        Observable.just("aa","bbbbb").lift(new Observable.Operator<Integer, String>() {
-            public Subscriber<? super String> call(final Subscriber<? super Integer> subscriber) {
-                return new Subscriber<String>() {
+        Observable.create(onSubscribe).create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(final Subscriber subscriber) {
+                Subscriber newSubscriber = new Subscriber<String>() {
                     public void onCompleted() {}
                     public void onError(Throwable throwable) {}
                     public void onNext(String s) {subscriber.onNext(s.length());}
                 };
+                newSubscriber.onStart();
+                onSubscribe.call(newSubscriber);
             }
-        }).subscribe(new Action1<Integer>() {
-            public void call(Integer aInt) {
-                System.out.print(aInt);
-            }
-        });
+        }).subscribe(subscriber);
+
+//        Observable.just("aa","bbbbb").lift(new Observable.Operator<Integer, String>() {
+//            public Subscriber<? super String> call(final Subscriber<? super Integer> subscriber) {
+//                return new Subscriber<String>() {
+//                    public void onCompleted() {}
+//                    public void onError(Throwable throwable) {}
+//                    public void onNext(String s) {subscriber.onNext(s.length());}
+//                };
+//            }
+//        }).subscribe(new Action1<Integer>() {
+//            public void call(Integer aInt) {
+//                System.out.print(aInt);
+//            }
+//        });
     }
     public static void main(String[] args) {
         new SwitchTest().test4();
