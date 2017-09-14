@@ -6,7 +6,10 @@ import java.util.List;
 import rx.Observable;
 import rx.Observer;
 import rx.Subscriber;
+import rx.functions.Action1;
 import rx.functions.Func1;
+import rx.observables.AsyncOnSubscribe;
+import rx.observables.SyncOnSubscribe;
 import rx.schedulers.Schedulers;
 
 /**
@@ -156,9 +159,54 @@ public class SwitchTest {
     }
 
     void test4() {
-        
+
+//        public <R> Observable<R> lift(Operator<? extends R, ? super T> operator) {
+//            return Observable.create(new OnSubscribe<R>() {
+//                @Override
+//                public void call(Subscriber subscriber) {
+//                    Subscriber newSubscriber = operator.call(subscriber);
+//                    newSubscriber.onStart();
+//                    onSubscribe.call(newSubscriber);
+//                }
+//            });
+//        }
+
+        Subscriber subscriber = new Subscriber() {
+            public void onCompleted() {}
+            public void onError(Throwable throwable) {}
+            public void onNext(Object o) {}
+        };
+
+        Observable.create(new Observable.OnSubscribe<String>() {
+                @Override
+                public void call(Subscriber subscriber) {
+                    subscriber.onNext("");
+                    subscriber.onNext("");
+                }
+            }).create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber subscriber) {
+//                Subscriber newSubscriber = operator.call(subscriber);
+//                newSubscriber.onStart();
+//                onSubscribe.call(newSubscriber);
+            }
+        });
+
+        Observable.just("aa","bbbbb").lift(new Observable.Operator<Integer, String>() {
+            public Subscriber<? super String> call(final Subscriber<? super Integer> subscriber) {
+                return new Subscriber<String>() {
+                    public void onCompleted() {}
+                    public void onError(Throwable throwable) {}
+                    public void onNext(String s) {subscriber.onNext(s.length());}
+                };
+            }
+        }).subscribe(new Action1<Integer>() {
+            public void call(Integer aInt) {
+                System.out.print(aInt);
+            }
+        });
     }
     public static void main(String[] args) {
-        new SwitchTest().test2();
+        new SwitchTest().test4();
     }
 }
